@@ -1,6 +1,6 @@
-<h1>Works.</h1>
 
 <% @articles.each do |article| %>
   <h3><%= article['title'] %></h3>
   <p><%= article['section'] %></p>
+  <p><%= link_to 'NYT Original', article['url'] %></p>
 <% end %>
