@@ -2,9 +2,10 @@
 <% @articles.each do |article| %>
   <h4><%= article['title'] %> | <%= article['section'] %></h4>
   <h6><%= article['byline'] %></h6>
-  <% if !article['multimedia'][2].nil? %>
+  <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
+  <% if article['multimedia'][2] %>
     <%= image_tag(article['multimedia'][2]['url']) %>
+    <h5><%= article['multimedia'][2]['caption'] %></h5>
   <% end %>
-  <!-- <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5> -->
   <p><%= link_to 'NYT Original', article['url'] %></p>
 <% end %>
