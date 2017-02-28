@@ -1,1 +1,11 @@
 <h1>Your Daily Congressional Report</h1>
+
+<% @reports.each do |bill| %>
+  <p><%= bill['number'] %> <%= bill['title'] %></p>
+  <p>Introduced: <%= bill['introduced_date'] %></p>
+  <p>Subject: <%= bill['primary_subject'] %></p>
+  <!-- <p>Bill URL: <%= bill['bill_uri'] %></p>
+  <p>Sponsor: <%= bill['sponsor_uri'] %></p> -->
+  <p>Last Major Action: <%= bill['latest_major_action'] %></p>
+  <hr>
+<% end  %>
