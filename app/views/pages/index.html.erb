@@ -1,6 +1,6 @@
 
-<% if @articles %>
-  <% @articles.each do |article| %>
+<% if @nyt_home_articles %>
+  <% @nyt_home_articles.each do |article| %>
     <h4><%= article['title'] %> | <%= article['section'] %></h4>
     <h6><%= article['byline'] %></h6>
     <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
@@ -10,4 +10,8 @@
     <% end %>
     <p><%= link_to 'NYT Original', article['url'] %></p>
   <% end %>
+<% end %>
+<% if @top_guardian_headlines %>
+<!-- Guardian Top 10 Stories section -->
+<!-- <%# @top_guardian_headlines %> -->
 <% end %>
