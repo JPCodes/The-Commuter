@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+
+div.art-wrapper {
+  position: absolute;
+  top: 100px;
+  left: 30%;
+  background: #fff;
+  max-height: 50vw;
+  max-width: 50vw;
+  border: 3px solid #000;
+  border-radius: 8px;
+  animation-name: dropIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+
+@keyframes dropIn {
+  0% {transform: translateY(-100%)}
+  100% {transform: translateY(0)}
+}
