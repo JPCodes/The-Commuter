@@ -21,14 +21,15 @@ div.art-wrapper {
   top: 100px;
   left: 30%;
   background: #fff;
-  max-height: 50vw;
-  max-width: 50vw;
+  max-height: 70vw;
+  max-width: 70vw;
   border: 3px solid #000;
   border-radius: 8px;
   animation-name: dropIn;
   animation-duration: 1s;
   animation-timing-function: ease-out;
   box-shadow: 10px 10px 5px #888888;
+  padding: 15px;
 }
 
 
