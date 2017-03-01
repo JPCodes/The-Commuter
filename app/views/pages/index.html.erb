@@ -11,7 +11,7 @@
       <%= image_tag(article['multimedia'][2]['url']) %>
       <h5><%= article['multimedia'][2]['caption'] %></h5>
     <% end %>
-    <p><%= link_to 'View', show_article_path(article: article), remote: true %></p>
+    <p><%= link_to 'View Information', show_article_path(article: article), remote: true %></p>
     <p><%= link_to 'Original', article['url'] %></p>
   <% end %>
 <% end %>

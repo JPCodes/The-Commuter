@@ -1,3 +1,12 @@
 <div class="art-wrapper">
-  <h1><%= @article[:title] %></h1>
+  <h2><%= @article['title'] %> | <%= @article['section'] %></h2>
+  <h6><%= @article['byline'] %></h6>
+  <h5><%= @article['published_date'].to_date.strftime("%d %B %Y") %></h5>
+  <% if @article['multimedia'][2] %>
+  <%= image_tag(@article['multimedia'][2]['url']) %>
+  <h5><%= @article['multimedia'][2]['caption'] %></h5>
+  <% end %>
+  <h4>Abstract:</h4>
+  <p><%= @article['abstract'] %><p>
+  <p><%= link_to 'Original', @article['url'] %></p>
 </div>
