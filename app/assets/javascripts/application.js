@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require_tree .
 //= require toastr
+
+var userLatitude, userLongitude;
+
+navigator.geolocation.watchPosition(function(position) {
+  console.log(position);
+  // Update latitude and longitude
+  userLatitude = position.coords.latitude;
+  userLongitude = position.coords.longitude;
+});
