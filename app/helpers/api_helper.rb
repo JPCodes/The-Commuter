@@ -23,7 +23,7 @@ module ApiHelper
 
   def retrieve_congressional_bills
     begin
-      RestClient.get("https://api.propublica.org/congress/v1/115/senate/bills/passed.json", headers={"X-API-Key": ENV['API_KEY_Propublica'] })
+      RestClient.get("https://api.propublica.org/congress/v1/115/senate/bills/passed.json", headers={"X-API-Key": ENV['API_KEY_PROPUBLICA'] })
     rescue
       puts 'Propublica Recent Bills Passed by Senate API Error'
     end

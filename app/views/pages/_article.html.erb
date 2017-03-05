@@ -1,7 +1,7 @@
 <div class="art-wrapper">
   <h2><%= @article['title'] %> | <%= @article['section'] %></h2>
   <h6><%= @article['byline'] %></h6>
-  <%= link_to 'Print Summary', download_pdf_path, target: :_blank %>
+  <%= link_to 'Print Summary', download_pdf_path(headline: @article['title'], author: @article['byline'], section: @article['section'], date: @article['published_date'].to_date.strftime("%d %B %Y"), body: @article['abstract']), target: :_blank %>
   <h5><%= @article['published_date'].to_date.strftime("%d %B %Y") %></h5>
   <% if @article['multimedia'][2] %>
   <%= image_tag(@article['multimedia'][2]['url']) %>
