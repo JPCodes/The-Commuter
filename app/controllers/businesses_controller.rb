@@ -9,7 +9,7 @@ class BusinessesController < ApplicationController
   end
 
   def find_businesses
-    @found_businesses = JSON.parse(get_businesses(search_params[:term], search_params[:city], search_params[:price_point]))
+    @found_businesses = JSON.parse(get_businesses(search_params))
     @businesses = @found_businesses['businesses']
     respond_to do |format|
       format.html { redirect_to businesses_path }
@@ -19,6 +19,6 @@ class BusinessesController < ApplicationController
 
   private
   def search_params
-    params.permit(:term, :city, :price_point)
+    params.permit(:term, :location, :price_point)
   end
 end

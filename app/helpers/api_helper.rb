@@ -30,12 +30,12 @@ module ApiHelper
   end
 
 
-  def get_businesses(term, location, price_point)
+  def get_businesses(yelp_search)
     begin
-      if price_point && price_point.length < 5
-        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{term}&location=#{location}&price=#{price_point.length}", headers={"authorization": ENV['API_KEY_YELP'] })
+      if !yelp_search[:price_point].empty?
+        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{yelp_search[:term]}&location=#{yelp_search[:location]}&price=#{yelp_search[:price_point].scan(/\$/).count}", headers={"authorization": ENV['API_KEY_YELP'] })
       else
-        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{term}&location=#{location}", headers={"authorization": ENV['API_KEY_YELP'] })
+        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{yelp_search[:term]}&location=#{yelp_search[:location]}", headers={"authorization": ENV['API_KEY_YELP'] })
       end
     rescue
       puts 'Yelp API ERROR'
