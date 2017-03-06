@@ -21,6 +21,8 @@ gem 'dotenv-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form'
 
+gem 'omniauth-google-oauth2'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
