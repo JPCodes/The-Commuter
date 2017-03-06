@@ -9,7 +9,8 @@ class BusinessesController < ApplicationController
   end
 
   def find_businesses
-    puts 'Find_Businesses Action Activated'
+    @found_businesses = JSON.parse(get_businesses(search_params[:term], search_params[:city], search_params[:price_point]))
+    @businesses = @found_businesses['businesses']
     respond_to do |format|
       format.html { redirect_to businesses_path }
       format.js

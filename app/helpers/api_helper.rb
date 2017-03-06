@@ -28,4 +28,19 @@ module ApiHelper
       puts 'Propublica Recent Bills Passed by Senate API Error'
     end
   end
+
+
+  def get_businesses(term, location, price_point)
+    begin
+      if price_point && price_point.length < 5
+        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{term}&location=#{location}&price=#{price_point.length}", headers={"authorization": ENV['API_KEY_YELP'] })
+      else
+        RestClient.get("https://api.yelp.com/v3/businesses/search?term=#{term}&location=#{location}", headers={"authorization": ENV['API_KEY_YELP'] })
+      end
+    rescue
+      puts 'Yelp API ERROR'
+    end
+  end
+
+
 end
