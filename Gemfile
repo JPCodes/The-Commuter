@@ -22,6 +22,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form'
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platform: :mri
