@@ -1,7 +1,17 @@
-<h1>Businesses</h1>
+<h1>Search for a Business</h1>
 
-<%- unless @lat_lng %>
+<%= bootstrap_form_tag remote: true do |f| %>
+  <%= f.text_field :term, placeholder: 'Tacos', required: true %><br>
+  <%= f.text_field :city, placeholder: 'Portland', required: true %><br>
+  <%= f.text_field :price_point, placeholder: '(Optional) Up to four $ signs, ex: $$' %><br>
+  <%= f.submit "Search" %>
+<% end %>
+
+<div class="businesses">
+
+</div>
+<% unless @lat_lng %>
 <script>
   getGeoLocation();
 </script>
-<%- end %>
+<% end %>

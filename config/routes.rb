@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'download/article', to: 'news#download_pdf', as: 'download_pdf'
   # Business
   resources :businesses, :only => [:index]
+  post '/businesses', to: 'businesses#find_businesses'
 end

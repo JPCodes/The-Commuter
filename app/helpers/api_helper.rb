@@ -28,6 +28,4 @@ module ApiHelper
       puts 'Propublica Recent Bills Passed by Senate API Error'
     end
   end
-
-
 end
