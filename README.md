@@ -12,6 +12,7 @@ TO DO
 [Coming Soon](#)
 
 ## Setup/Installation Requirements
+Note to Cloud 9 users, in _config/database.yml_ you may need to specify the database template by uncommenting lines 9 and 14.
 
 * _In the Terminal, run:_
 ```

@@ -1,0 +1,9 @@
+<h1><%= @conversation.title %></h1>
+<h4>Posted by <%= @conversation.user.name %></h4>
+<% if current_user.id == @conversation.user.id %>
+  <%= link_to 'Delete This Conversation', conversation_path, method: :delete, :data => {confirm: 'Are You Sure?'} %>
+  <%= link_to 'Edit This Conversation', edit_conversation_path(@conversation) %>
+<% end %>
+<p>
+  <%= @conversation.content %>
+</p>

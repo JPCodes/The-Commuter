@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   include ApiHelper
+  skip_before_action :require_authentication!
   def index
     if retrieve_guardian_headlines then @top_guardian_headlines = JSON.parse(retrieve_guardian_headlines) else puts 'Top Guardian Headlines not retrieved (NewsController#Index)' end
 

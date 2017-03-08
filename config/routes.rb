@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   # Business
   resources :businesses, :only => [:index]
   post '/businesses', to: 'businesses#find_businesses'
+  # Conversations
+  resources :conversations
 end

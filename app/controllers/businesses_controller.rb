@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   include ApiHelper
-
+  skip_before_action :require_authentication!
   def index
     if cookies[:lat_lng]
       @lat_lng = cookies[:lat_lng].split("|")
