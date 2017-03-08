@@ -34,6 +34,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @response = Response.new
   end
 
   def destroy
