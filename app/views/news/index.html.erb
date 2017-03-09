@@ -15,7 +15,12 @@
     <p><%= link_to 'Original', article['url'] %></p>
   <% end %>
 <% end %>
+<hr>
 <% if @top_guardian_headlines %>
 Guardian Top 10 Stories section
-<%= @top_guardian_headlines %>
+  <% @top_guardian_headlines.each do |article| %>
+  <h4><%= article['webTitle'] %></h4>
+  <h6><%= article['sectionName'] %></h6>
+  <h5><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
+  <% end %>
 <% end %>
