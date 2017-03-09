@@ -9,8 +9,7 @@ class BusinessesController < ApplicationController
   end
 
   def find_businesses
-    @found_businesses = JSON.parse(get_businesses(search_params))
-    @businesses = @found_businesses['businesses']
+    if @found_businesses = JSON.parse(get_businesses(search_params)) then @businesses = @found_businesses['businesses'] else puts 'Propublica Recent Bills Passed by Senate not retrieved (BusinessesController#find_businesses)' end
     respond_to do |format|
       format.html { redirect_to businesses_path }
       format.js
