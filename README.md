@@ -1,4 +1,4 @@
-# __
+# _The Commuter_
 
 #### _Information-centered Rails Capstone Project. 06 March 2017_
 
@@ -9,15 +9,15 @@
 TO DO
 
 ## Heroku
-[Coming Soon](#)
+[The Commuter](https://the-commuter.herokuapp.com/)
 
 ## Setup/Installation Requirements
 Note to Cloud 9 users, in _config/database.yml_ you may need to specify the database template by uncommenting lines 9 and 14.
 
 * _In the Terminal, run:_
 ```
-git clone https://github.com/JPCodes/NYT-Rails-Capstone
-cd NYT-Rails-Capstone
+git clone https://github.com/JPCodes/The-Commuter
+cd The-Commuter
 bundle install
 rake db:create
 rake db:migrate
