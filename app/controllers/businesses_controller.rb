@@ -9,7 +9,11 @@ class BusinessesController < ApplicationController
   end
 
   def find_businesses
-    if @found_businesses = JSON.parse(get_businesses(search_params)) then @businesses = @found_businesses['businesses'] else puts 'Yelp Businesses not retrived. (BusinessesController#Find_Businesses)' end
+    if @found_businesses = JSON.parse(get_businesses(search_params))
+      @businesses = @found_businesses['businesses']
+    else
+      puts 'Yelp Businesses not retrived. (BusinessesController#Find_Businesses)'
+    end
     respond_to do |format|
       format.html { redirect_to businesses_path }
       format.js
