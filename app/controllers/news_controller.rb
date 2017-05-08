@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   include ApiHelper
   skip_before_action :require_authentication!
+  # TODO: Remove else and return data from the API method's call or rescue
   def index
     if @top_guardian_headlines = retrieve_guardian_headlines
       @top_guardian_headlines = JSON.parse(@top_guardian_headlines)['response']['results']
