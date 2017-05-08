@@ -2,9 +2,19 @@ class NewsController < ApplicationController
   include ApiHelper
   skip_before_action :require_authentication!
   def index
-    if @top_guardian_headlines = retrieve_guardian_headlines then @top_guardian_headlines = JSON.parse(@top_guardian_headlines)['response']['results'] else puts 'Top Guardian Headlines not retrieved (NewsController#Index)' end
+    if @top_guardian_headlines = retrieve_guardian_headlines
+      @top_guardian_headlines = JSON.parse(@top_guardian_headlines)['response']['results']
+    else
+      # retrieve from cache
+      puts 'Top Guardian Headlines not retrieved (NewsController#Index)'
+    end
 
-    if @nyt_home_articles = retrieve_home_articles then @nyt_home_articles = JSON.parse(@nyt_home_articles)['results'] else puts 'NYT Home Articles not retrieved (NewsController#Index)' end
+    if @nyt_home_articles = retrieve_home_articles
+      @nyt_home_articles = JSON.parse(@nyt_home_articles)['results']
+    else
+      # retrieve from cache
+      puts 'NYT Home Articles not retrieved (NewsController#Index)'
+    end
   end
 
   def show_article
@@ -18,7 +28,12 @@ class NewsController < ApplicationController
   end
 
   def congressional_report
-    if @reports = retrieve_congressional_bills then @reports = JSON.parse(@reports)['results'][0]['bills'] else puts 'Propublica Recent Bills Passed by Senate not retrieved (NewsController#Congressional_Report)' end
+    if @reports = retrieve_congressional_bills
+      @reports = JSON.parse(@reports)['results'][0]['bills']
+      else
+        # retrieve from cache
+        puts 'Propublica Recent Bills Passed by Senate not retrieved (NewsController#Congressional_Report)'
+      end
   end
 
   def download_pdf
