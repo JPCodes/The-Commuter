@@ -5,8 +5,10 @@ module ApiHelper
       RestClient.get("https://api.nytimes.com/svc/topstories/v2/home.json", q={
         'api-key': ENV['API_KEY_NYT']
       })
-    rescue
-      puts 'NYT Top Stories V2 API Error'
+    rescue => e
+      # return data from cache
+      puts 'NYT Top Stories V2 API Error: '
+      print e.message
     end
   end
 
@@ -16,16 +18,20 @@ module ApiHelper
       {
         params: {'api-key': ENV['API_KEY_GUARDIAN']}
       })
-    rescue
+    rescue => e
+      # return data from cache
       puts 'Guardian US Top Story Headlines API Error'
+      print e.message
     end
   end
 
   def retrieve_congressional_bills
     begin
       RestClient.get("https://api.propublica.org/congress/v1/115/senate/bills/passed.json", headers={"X-API-Key": ENV['API_KEY_PROPUBLICA'] })
-    rescue
+    rescue => e
+      # return data from cache
       puts 'Propublica Recent Bills Passed by Senate API Error'
+      print e.message
     end
   end
 
