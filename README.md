@@ -6,7 +6,7 @@
 
 ## Description
 
-TO DO
+The Commuter is the app that I wish I had during my morning commute. It features news from the New York Times and the Guardian. There is also a section for viewing the latest major bills in Congress and their current status. If one wishes to discuss any of these things, there is also a discussion forum that is available to anyone that signs in using Google or Facebook. Lastly, there is a page that features a Yelp search and allows the user to see any search result through the Uber app.
 
 ## Heroku
 [The Commuter](https://the-commuter.herokuapp.com/)
