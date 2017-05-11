@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :responses, :except => [:index, :show]
   end
+  # Pages
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 end
