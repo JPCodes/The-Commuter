@@ -20,6 +20,7 @@ gem 'toastr-rails', '~> 1.0.3'
 gem 'dotenv-rails', '~> 2.2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form', '~> 2.6.0'
+gem 'newrelic_rpm', '~> 3.15', '>= 3.15.2.317'
 
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth', '~> 1.6.1'
