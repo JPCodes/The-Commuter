@@ -1,8 +1,11 @@
 <h1>Conversations</h1>
 <h3>News, Politics, Businesses, Meetups talks</h3>
-
+<hr>
+<%= link_to 'Start a New Conversation', new_conversation_path %>
+<hr>
 <% @conversations.each do |conversation| %>
   <p>
     <%= link_to conversation.title, conversation_path(conversation) %>
   </p>
 <% end %>
+<hr>

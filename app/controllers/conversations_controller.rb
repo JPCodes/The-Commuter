@@ -39,6 +39,7 @@ class ConversationsController < ApplicationController
 
   def destroy
     @conversation.destroy
+    flash[:danger] = 'Conversation was successfully deleted'
     redirect_to conversations_path
   end
 
