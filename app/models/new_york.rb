@@ -1,7 +1,7 @@
 class NewYork < ActiveRecord::Base
   has_one :news_cache, as: :content_storage
   validates :update_interval, :content_type, presence: true
-  before_save :cache_api_data
+  after_commit :retrieve_specified_content
 
   enum content_type: {
     home: 0,
@@ -10,8 +10,19 @@ class NewYork < ActiveRecord::Base
     movies: 3
   }
 
-  def cache_api_data
-    # get api results
-    content_storage = NewsCache.new(content_storage_body: 'testing')
+  def retrieve_specified_content
+    eval "retrieve_#{content_type}_articles"
+  end
+
+  def cache_api_data(response)
+    nc = NewsCache.create!(content_storage_body: response, content_storage: self)
+    content_storage = nc
+  end
+
+  def retrieve_home_articles
+    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/home.json", q={
+      'api-key': ENV['API_KEY_NYT']
+    })
+    cache_api_data(response)
   end
 end
