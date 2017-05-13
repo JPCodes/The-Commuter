@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512044140) do
+ActiveRecord::Schema.define(version: 20170513002553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20170512044140) do
     t.text    "content_storage_body"
     t.string  "content_storage_type"
     t.integer "content_storage_id"
+  end
+
+  create_table "news_guardians", force: :cascade do |t|
+    t.integer "content_type"
+    t.integer "update_interval"
   end
 
   create_table "responses", force: :cascade do |t|
