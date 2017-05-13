@@ -4,7 +4,7 @@ class NewsGuardian < ActiveRecord::Base
   after_commit :retrieve_specified_content
 
   enum content_type: {
-    usa: 4,
+    usa: 4
   }
 
   def retrieve_specified_content
