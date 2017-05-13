@@ -3,5 +3,8 @@
   <li><%= link_to 'Business Search', businesses_path %></li>
   <li><%= link_to 'Congressional Report', congressional_report_path %></li>
   <li><%= link_to 'Conversations', conversations_path %></li>
+  <!-- TODO: Replace user check with null object pattern and allow guest user to see a sample dashboard -->
+  <% if current_user %>
   <li><%= link_to 'Dashboard', dashboard_path(current_user.dashboard) %></li>
+  <% end %>
 </ul>

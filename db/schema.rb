@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170513030115) do
 
   create_table "dashboards", force: :cascade do |t|
     t.text    "api_content_preferences"
+    t.integer "privacy_setting",         default: 1
     t.integer "user_id"
   end
 
