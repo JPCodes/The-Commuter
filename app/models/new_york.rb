@@ -25,4 +25,25 @@ class NewYork < ActiveRecord::Base
     })
     cache_api_data(response)
   end
+
+  def retrieve_sports_articles
+    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/sports.json", q={
+      'api-key': ENV['API_KEY_NYT']
+    })
+    cache_api_data(response)
+  end
+
+  def retrieve_tech_articles
+    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/technology.json", q={
+      'api-key': ENV['API_KEY_NYT']
+    })
+    cache_api_data(response)
+  end
+
+  def retrieve_movies_articles
+    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/home.json", q={
+      'api-key': ENV['API_KEY_NYT']
+    })
+    cache_api_data(response)
+  end
 end
