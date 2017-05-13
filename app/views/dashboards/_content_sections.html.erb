@@ -3,3 +3,8 @@
 <!-- number dictates how many sections are passed back to content dashboard show -->
 
 <!-- each section should contain chosen information -->
+
+<% @dashboard.api_content_preferences.each do |content_enum| %>
+  <!-- return content to iterate over and display -->
+  <%= generate_dashboard_content(content_enum) %>
+<% end %>

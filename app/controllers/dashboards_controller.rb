@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def show
+    @dashboard = Dashboard.find(params[:id])
     # To display belonging user's name
-    @user = Dashboard.find(params[:id]).user
+    @user = @dashboard.user
   end
 end
