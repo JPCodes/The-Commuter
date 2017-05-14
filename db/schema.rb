@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513030115) do
+ActiveRecord::Schema.define(version: 20170514230429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20170513030115) do
   end
 
   create_table "news_guardians", force: :cascade do |t|
+    t.integer "content_type"
+    t.integer "update_interval"
+  end
+
+  create_table "propublicas", force: :cascade do |t|
     t.integer "content_type"
     t.integer "update_interval"
   end

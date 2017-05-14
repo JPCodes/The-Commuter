@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   end
 
   def randomize_content_preferences
-    content_enums = (0...4).to_a.sample(3)
+    content_enums = (0...6).to_a.sample(3)
   end
 end

@@ -17,7 +17,7 @@
               <%= image_tag article['multimedia'][2]['url'], class: 'nyt-dashboard-img' %>
               <h5><%= article['multimedia'][2]['caption'] %></h5>
             <% end %>
-            <p><%= link_to 'Read More', article['url'] %></p>
+            <p><%= link_to 'Read More', article['url'], target: '_blank' %></p>
           </div>
         <% end %>
       </div>
@@ -29,7 +29,23 @@
           <div class="dashboard-sub-box col-md-3 col-sm-6 col-xs-12">
             <h5><%= article['webTitle'] %> | <%= article['sectionName'] %></h5>
             <h5><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
-            <p><%= link_to 'Read More', article['url'] %></p>
+            <p><%= link_to 'Read More', article['webUrl'], target: '_blank' %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% elsif generated_content[:source] == 'Propublica' %>
+    <% generated_content[:content].in_groups_of(4, false).each do |bills| %>
+      <div class="row dashboard-box">
+        <% bills.each do |bill| %>
+          <div class="dashboard-sub-box col-md-3 col-sm-6 col-xs-12">
+            <p><%= bill['number'] %> <%= bill['title'] %></p>
+            <p>Introduced: <%= bill['introduced_date'] %></p>
+            <% if !bill['primary_subject'].empty? %>
+              <p>Subject: <%= bill['primary_subject'] %></p>
+            <% end %>
+            <p>Last Major Action: <%= bill['latest_major_action'] %></p>
+            <p><%= link_to 'See Bill', bill['govtrack_url'] %></p>
           </div>
         <% end %>
       </div>
