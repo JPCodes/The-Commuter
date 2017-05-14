@@ -5,6 +5,7 @@
 <!-- each section should contain chosen information -->
 
 <% @dashboard.api_content_preferences.each do |content_enum| %>
-  <!-- return content to iterate over and display -->
-  <%= generate_dashboard_content(content_enum) %>
+  <%= render partial: 'content_section', locals: { generated_content: generate_dashboard_content(content_enum) } %>
+  <br>
+  <br>
 <% end %>
