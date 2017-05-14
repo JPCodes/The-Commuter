@@ -25,9 +25,16 @@ class NewsCache < ActiveRecord::Base
 
     def access_one_day_backup(model_name, content_name)
       content = eval "#{model_name}.where(update_interval: 1, content_type: '#{content_name}').first.news_cache"
+
+      if model_name == 'NewYork'
+        content = JSON.parse(content[:content_storage_body])['results']
+      elsif model_name == 'NewsGuardian'
+        content = JSON.parse(content[:content_storage_body])['response']['results']
+      end
+
       return {
         source: model_name,
-        content: JSON.parse(content[:content_storage_body])['results'],
+        content: content,
         content_type: content_name
       }
     end

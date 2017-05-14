@@ -22,5 +22,17 @@
         <% end %>
       </div>
     <% end %>
+  <% elsif generated_content[:source] == 'NewsGuardian' %>
+    <% generated_content[:content].in_groups_of(4, false).each do |articles| %>
+      <div class="row dashboard-box">
+        <% articles.each do |article| %>
+          <div class="dashboard-sub-box col-md-3 col-sm-6 col-xs-12">
+            <h5><%= article['webTitle'] %> | <%= article['sectionName'] %></h5>
+            <h5><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
+            <p><%= link_to 'Read More', article['url'] %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
