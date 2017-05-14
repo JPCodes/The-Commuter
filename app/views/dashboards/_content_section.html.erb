@@ -1,2 +1,14 @@
-<!-- Take in stuff and style it here -->
-<%= generated_content %>
+<!-- Refactor -->
+<% if  generated_content[:source] == 'NewYork' %>
+  <% generated_content[:content].each do |article| %>
+    <h4><%= article['title'] %> | <%= article['section'] %></h4>
+    <h6><%= article['byline'] %></h6>
+    <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
+    <% if article['multimedia'][2] %>
+      <%= image_tag(article['multimedia'][2]['url']) %>
+      <h5><%= article['multimedia'][2]['caption'] %></h5>
+    <% end %>
+    <p><%= link_to 'View Information', show_article_path(article: article), remote: true %></p>
+    <p><%= link_to 'Original', article['url'] %></p>
+  <% end %>
+<% end %>
