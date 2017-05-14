@@ -1,16 +1,20 @@
 <!-- Refactor -->
-<div class="row dashboard-box">
+<div class="dashboard">
   <p>Content: <%= generated_content[:content_type] %></p>
   <% if generated_content[:source] == 'NewYork' %>
-    <% generated_content[:content].in_groups_of(3, false).each do |articles| %>
-      <div class="row">
+    <% generated_content[:content].in_groups_of(4, false).each do |articles| %>
+      <div class="row dashboard-box">
         <% articles.each do |article| %>
-          <div class="dashboard-sub-box col-md-4 col-sm-6">
+          <div class="dashboard-sub-box col-md-3 col-sm-6 col-xs-12">
             <h5><%= article['title'] %> | <%= article['section'] %></h5>
             <h6><%= article['byline'] %></h6>
             <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
-            <% if article['multimedia'][2] %>
-              <%= image_tag(article['multimedia'][2]['url']) %>
+            <!-- Refactor -->
+            <% if article['multimedia'][3] %>
+              <%= image_tag article['multimedia'][3]['url'], class: 'dashboard-img' %>
+              <h5><%= article['multimedia'][3]['caption'] %></h5>
+            <% elsif article['multimedia'][2] %>
+              <%= image_tag article['multimedia'][2]['url'], class: 'dashboard-img' %>
               <h5><%= article['multimedia'][2]['caption'] %></h5>
             <% end %>
             <p><%= link_to 'Read More', article['url'] %></p>

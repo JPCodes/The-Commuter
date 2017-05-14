@@ -1,6 +1,6 @@
 class NewsCache < ActiveRecord::Base
   belongs_to :content_storage, polymorphic: true
-
+  # TODO: remove highest res images from cache before uploading to DB
   class << self
     def cached_model_enums
       [['NewYork', NewYork.content_types], ['NewsGuardian', NewsGuardian.content_types]]
