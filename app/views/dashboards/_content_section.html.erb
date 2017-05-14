@@ -1,5 +1,7 @@
 <!-- Refactor -->
-<% if  generated_content[:source] == 'NewYork' %>
+<div class="">
+<p>Content: <%= generated_content[:content_type] %></p>
+<% if generated_content[:source] == 'NewYork' %>
   <% generated_content[:content].each do |article| %>
     <h4><%= article['title'] %> | <%= article['section'] %></h4>
     <h6><%= article['byline'] %></h6>
@@ -8,7 +10,7 @@
       <%= image_tag(article['multimedia'][2]['url']) %>
       <h5><%= article['multimedia'][2]['caption'] %></h5>
     <% end %>
-    <p><%= link_to 'View Information', show_article_path(article: article), remote: true %></p>
-    <p><%= link_to 'Original', article['url'] %></p>
+    <p><%= link_to 'Read More', article['url'] %></p>
   <% end %>
 <% end %>
+</div>

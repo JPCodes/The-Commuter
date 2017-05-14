@@ -27,7 +27,8 @@ class NewsCache < ActiveRecord::Base
       content = eval "#{model_name}.where(update_interval: 1, content_type: '#{content_name}').first.news_cache"
       return {
         source: model_name,
-        content: JSON.parse(content[:content_storage_body])['results']
+        content: JSON.parse(content[:content_storage_body])['results'],
+        content_type: content_name
       }
     end
   end
