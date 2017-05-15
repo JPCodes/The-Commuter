@@ -15,8 +15,8 @@
  *= require toastr
  */
 
-  @import "bootstrap-sprockets";
   @import "bootstrap";
+  @import "font-awesome";
 
 
 div.art-wrapper {
@@ -61,3 +61,11 @@ div.art-wrapper {
 // .row {
 //   border: 1px solid #000;
 // }
+
+// Footer
+.social-links li {
+  display: inline-block;
+  font-size: 2.5em;
+  margin-left: 20px;
+  margin-right: 20px;
+}
