@@ -13,8 +13,14 @@ class Propublica < ActiveRecord::Base
   end
 
   def cache_api_data(response)
-    nc = NewsCache.create!(content_storage_body: response, content_storage: self)
-    content_storage = nc
+    # Rescue because APIs are unpredictable
+    begin
+      retries ||= 0
+      nc = NewsCache.create!(content_storage_body: response, content_storage: self)
+      content_storage = nc
+    rescue
+      retry if (retries += 1) < 3
+    end
   end
 
   def retrieve_senate_bills
