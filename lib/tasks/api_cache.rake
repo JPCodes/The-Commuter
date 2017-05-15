@@ -62,4 +62,11 @@ namespace :cache do
     Rake::Task['cache:guardian'].invoke
     Rake::Task['cache:propublica'].invoke
   end
+
+  task reset: :environment do
+    NewYork.destroy_all
+    NewsGuardian.destroy_all
+    Propublica.destroy_all
+    NewsCache.destroy_all
+  end
 end
