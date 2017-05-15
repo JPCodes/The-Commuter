@@ -41,7 +41,7 @@ class NewYork < ActiveRecord::Base
   end
 
   def retrieve_movies_articles
-    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/home.json", q={
+    response = RestClient.get("https://api.nytimes.com/svc/topstories/v2/movies.json", q={
       'api-key': ENV['API_KEY_NYT']
     })
     cache_api_data(response)
