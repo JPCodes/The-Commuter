@@ -4,16 +4,6 @@
       <div class="col-sm-8 py-4">
         <h4 class="text-white">The Commuter</h4>
         <p class="text-muted">The Commuter is the app that I wish I had during my morning commute. It features news from the New York Times and the Guardian. There is also a section for viewing the latest major bills in Congress and their current status. <b>Users can also customize their dashboard by choosing what news they'd like to see.</b> If one wishes to discuss any of these things, there is also a discussion forum that is available to anyone that signs in using Google or Facebook. Lastly, there is a page that features a Yelp search and allows the user to see any search result through the Uber app.</p>
-        <p class="text-white">
-          <% if current_user %>
-          Signed in as <strong><%= current_user.name %></strong>!
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
-          <% else %>
-          <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-          <br>
-          <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-          <% end %>
-        </p>
       </div>
       <div class="col-sm-4 py-4">
         <h4 class="text-white">Menu:</h4>
@@ -26,6 +16,13 @@
           <li><%= link_to 'Business Search', businesses_path, class: 'text-white' %></li>
           <li><%= link_to 'Congressional Report', congressional_report_path, class: 'text-white' %></li>
           <li><%= link_to 'Conversations', conversations_path, class: 'text-white' %></li>
+          <% if current_user %>
+          Signed in as <strong><%= current_user.name %></strong>!
+          <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+          <% else %>
+          <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+          <% end %>
         </ul>
       </div>
     </div>
