@@ -41,9 +41,9 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.6)
       execjs
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+    bootstrap (4.0.0.alpha6)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     bootstrap_form (2.6.0)
     brakeman (3.6.1)
     builder (3.2.3)
@@ -70,6 +70,8 @@ GEM
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.5.5)
@@ -236,12 +238,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.6)
+  bootstrap (~> 4.0.0.alpha6)
   bootstrap_form (~> 2.6.0)
   brakeman (~> 3.3, >= 3.3.2)
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails (~> 2.2.0)
+  font-awesome-rails (~> 4.7, >= 4.7.0.1)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.2.2)
   listen (~> 3.0.5)

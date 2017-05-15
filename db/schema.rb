@@ -10,21 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307191813) do
+ActiveRecord::Schema.define(version: 20170514230429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "responses", force: :cascade do |t|
-    t.text    "content"
-    t.integer "user_id"
-    t.integer "conversation_id"
-  end
 
   create_table "conversations", force: :cascade do |t|
     t.string  "title"
     t.text    "content"
     t.integer "user_id"
+  end
+
+  create_table "dashboards", force: :cascade do |t|
+    t.text    "api_content_preferences"
+    t.integer "privacy_setting",         default: 1
+    t.integer "user_id"
+  end
+
+  create_table "new_yorks", force: :cascade do |t|
+    t.integer  "content_type"
+    t.integer  "update_interval"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "news_caches", force: :cascade do |t|
+    t.text    "content_storage_body"
+    t.string  "content_storage_type"
+    t.integer "content_storage_id"
+  end
+
+  create_table "news_guardians", force: :cascade do |t|
+    t.integer "content_type"
+    t.integer "update_interval"
+  end
+
+  create_table "propublicas", force: :cascade do |t|
+    t.integer "content_type"
+    t.integer "update_interval"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.text    "content"
+    t.integer "user_id"
+    t.integer "conversation_id"
   end
 
   create_table "users", force: :cascade do |t|

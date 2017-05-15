@@ -4,26 +4,69 @@ include ApiHelper
 namespace :cache do
   desc 'Cache API results to database'
   task nyt: :environment do
-    if results = retrieve_home_articles
-      # cache
-    else
-      # Queue this task again
+    begin
+      retries ||= 0
+      NewYork.create!(content_type: 'home', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
+    end
+
+    begin
+      retries ||= 0
+      NewYork.create!(content_type: 'tech', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
+    end
+
+    begin
+      retries ||= 0
+      NewYork.create!(content_type: 'sports', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
+    end
+
+    begin
+      retries ||= 0
+      NewYork.create!(content_type: 'movies', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
     end
   end
 
   task guardian: :environment do
-    if results = retrieve_guardian_headlines
-      # cache
-    else
-      # Queue this task again
+    begin
+      retries ||= 0
+      NewsGuardian.create!(content_type: 'usa', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
     end
   end
 
-  task congress: :environment do
-    if results = retrieve_congressional_bills
-      # cache
-    else
-      # Queue this task again
+  task propublica: :environment do
+    begin
+      retries ||= 0
+      Propublica.create!(content_type: 'senate', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
     end
+
+    begin
+      Propublica.create!(content_type: 'house', update_interval: 1)
+    rescue
+      retry if (retries += 1) < 3
+    end
+  end
+
+  task populate: :environment do
+    Rake::Task['cache:nyt'].invoke
+    Rake::Task['cache:guardian'].invoke
+    Rake::Task['cache:propublica'].invoke
+  end
+
+  task reset: :environment do
+    NewYork.destroy_all
+    NewsGuardian.destroy_all
+    Propublica.destroy_all
+    NewsCache.destroy_all
   end
 end

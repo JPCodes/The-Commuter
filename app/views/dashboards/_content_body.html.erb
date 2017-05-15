@@ -1,0 +1,9 @@
+<!-- will render x number of content sections -->
+<!-- number will be calculated from current_user.dashboard.api_content_preferences.count -->
+<!-- number dictates how many sections are passed back to content dashboard show -->
+
+<!-- each section should contain chosen information -->
+
+<% @dashboard.api_content_preferences.each do |content_enum| %>
+  <%= render partial: 'content_section', locals: { generated_content: generate_dashboard_content(content_enum) } %>
+<% end %>

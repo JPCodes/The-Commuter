@@ -1,0 +1,54 @@
+<!-- Refactor -->
+<div class="card card-outline-primary mb-3 text-center col-md-12">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+      <p class="text-black"><%= generated_content[:content_type].upcase %></p>
+    </blockquote>
+  </div>
+</div>
+
+<% if generated_content[:source] == 'NewYork' %>
+  <% generated_content[:content].in_groups_of(4, false).each do |articles| %>
+      <% articles.each do |article| %>
+        <div class="card col-md-3 col-sm-6 col-xs-12">
+          <h5 class="card-title"><%= article['title'] %> | <%= article['section'] %></h5>
+          <h6 class="card-text"><%= article['byline'] %></h6>
+          <h5 class="card-text"><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
+          <!-- Refactor -->
+          <% if article['multimedia'][3] %>
+            <%= image_tag article['multimedia'][3]['url'], class: 'nyt-dashboard-img center-block' %>
+            <p class="card-text"><%= article['multimedia'][3]['caption'] %></p>
+          <% elsif article['multimedia'][2] %>
+            <%= image_tag article['multimedia'][2]['url'], class: 'nyt-dashboard-img center-block' %>
+            <p class="card-text"><%= article['multimedia'][2]['caption'] %></p>
+          <% end %>
+          <p class="card-text"><%= link_to 'Read More', article['url'], target: '_blank' %></p>
+        </div>
+      <% end %>
+  <% end %>
+<% elsif generated_content[:source] == 'NewsGuardian' %>
+  <% generated_content[:content].in_groups_of(4, false).each do |articles| %>
+      <% articles.each do |article| %>
+        <div class="card col-md-3 col-sm-6 col-xs-12">
+          <h5 class="card-title"><%= article['webTitle'] %> | <%= article['sectionName'] %></h5>
+          <h5 class="card-text"><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
+          <p class="card-text"><%= link_to 'Read More', article['webUrl'], target: '_blank' %></p>
+        </div>
+      <% end %>
+  <% end %>
+<% elsif generated_content[:source] == 'Propublica' %>
+  <% generated_content[:content].in_groups_of(4, false).each do |bills| %>
+      <% bills.each do |bill| %>
+        <div class="card col-md-3 col-sm-6 col-xs-12">
+          <%= image_tag ('propublica/'.concat((rand(1...9)).to_s).concat('.jpg')), :class => 'center-block', size: "210x140"  %>
+          <p class="card-title"><%= bill['number'] %> <%= bill['title'] %></p>
+          <p class="card-text">Introduced: <%= bill['introduced_date'] %></p>
+          <% if !bill['primary_subject'].empty? %>
+            <p class="card-text">Subject: <%= bill['primary_subject'] %></p>
+          <% end %>
+          <p class="card-text">Last Major Action: <%= bill['latest_major_action'] %></p>
+          <p class="card-text"><%= link_to 'See Bill', bill['govtrack_url'] %></p>
+        </div>
+      <% end %>
+  <% end %>
+<% end %>

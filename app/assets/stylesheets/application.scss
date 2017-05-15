@@ -15,8 +15,8 @@
  *= require toastr
  */
 
-  @import "bootstrap-sprockets";
   @import "bootstrap";
+  @import "font-awesome";
 
 
 div.art-wrapper {
@@ -39,4 +39,33 @@ div.art-wrapper {
 @keyframes dropIn {
   0% {transform: translateY(-100%)}
   100% {transform: translateY(0)}
+}
+
+.row.dashboard-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.dashboard-box > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.nyt-dashboard-img {
+  max-width: 210px;
+}
+
+// .dashboard-sub-box {
+//   border: 1px solid red;
+// }
+//
+// .row {
+//   border: 1px solid #000;
+// }
+
+// Footer
+.social-links li {
+  display: inline-block;
+  font-size: 2.5em;
+  margin-left: 20px;
+  margin-right: 20px;
 }
