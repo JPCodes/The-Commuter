@@ -18,8 +18,6 @@ class NewsCache < ActiveRecord::Base
     end
 
     def retrieve_cached_content(model_name, content_name)
-      puts model_name
-      puts content_name
       access_one_day_backup(model_name, content_name)
     end
 
@@ -31,7 +29,7 @@ class NewsCache < ActiveRecord::Base
       elsif model_name == 'NewsGuardian'
         content = JSON.parse(content[:content_storage_body])['response']['results'].first(20)
       elsif model_name == 'Propublica'
-        content = JSON.parse(content[:content_storage_body])['results'][0]['bills'].first(20)
+        content = JSON.parse(content[:content_storage_body])['results'][0]['bills'].first(12)
       end
 
       return {
