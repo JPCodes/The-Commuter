@@ -1,9 +1,8 @@
 
 <%= render 'layouts/errors', object: @response %>
 
-<%= form_for [@conversation, @response] do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
-<% end %>
+  <%= form_for [@conversation, @response], html: { class: 'input-group'} do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.text_field :content, class: 'form-control', placeholder: 'Add a Comment' %>
+    <%= f.button fa_icon('edit', text: '') %>
+  <% end %>
