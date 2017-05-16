@@ -13,7 +13,7 @@ class ResponsesController < ApplicationController
       redirect_to conversation_path(@conversation)
     else
       flash[:failure] = 'Something went wrong.'
-      render :new
+      redirect_to root_path
     end
   end
 
