@@ -1,7 +1,6 @@
 
 <section class="jumbotron text-center">
   <div class="container">
-    <!-- TODO: Check for dashboard privacy setting to decide whether to show name -->
     <h1 class="jumbotron-heading">Conversations</h1>
     <p class="lead text-muted">News, Politics, Businesses, Meetups talks</p>
     <p>
@@ -32,7 +31,7 @@
         <%= link_to conversation.title, conversation_path(conversation) %>
       </div>
       <div class="col-md-4">
-        <%= link_to distance_of_time_in_words(conversation.created_at, Time.now) %> ago
+        <%= distance_of_time_in_words(conversation.created_at, Time.now) %> ago
       </div>
     </div>
   <% end %>

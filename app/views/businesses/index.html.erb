@@ -1,14 +1,21 @@
-<h1>Search for a Business</h1>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Yelp &amp; Uber</h1>
+    <p class="lead text-muted">Search for Businesses through Yelp and book an Uber to get you there.</p>
+  </div>
+</section>
+<br>
+<div class="container">
+  <%= bootstrap_form_tag remote: true do |f| %>
+    <%= f.text_field :term, placeholder: 'Tacos', required: true %><br>
+    <%= f.text_field :location, placeholder: 'Portland', required: true %><br>
+    <%= f.text_field :price_point, placeholder: '(Optional) Up to four $ signs, ex: $$' %><br>
+    <%= f.submit "Search" %>
+  <% end %>
 
-<%= bootstrap_form_tag remote: true do |f| %>
-  <%= f.text_field :term, placeholder: 'Tacos', required: true %><br>
-  <%= f.text_field :location, placeholder: 'Portland', required: true %><br>
-  <%= f.text_field :price_point, placeholder: '(Optional) Up to four $ signs, ex: $$' %><br>
-  <%= f.submit "Search" %>
-<% end %>
+  <div class="businesses">
 
-<div class="businesses">
-
+  </div>
 </div>
 <% unless @lat_lng %>
 <script>
