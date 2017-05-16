@@ -107,3 +107,44 @@
 .conversation-buttons {
   margin-left: 1rem;
 }
+
+// Index
+
+.conversations-bar-main {
+  background: #eceeef!important;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+  color: #000;
+}
+
+.conversations-bar1 {
+  background: #6b737f!important;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.conversations-bar2 {
+  background: #000!important;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.conversations-bar1 a, .conversations-bar2 a {
+  color: #fff;
+}
+
+.conversations-bar1 a:hover {
+  color: #000;
+}
+
+.conversations-bar2 a:hover {
+  color: #fff;
+}

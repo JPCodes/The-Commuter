@@ -1,13 +1,41 @@
-<h1>Conversations</h1>
-<h3>News, Politics, Businesses, Meetups talks</h3>
-<hr>
-<%= link_to 'Start a New Conversation', new_conversation_path %>
-<hr>
-<% @conversations.each do |conversation| %>
-  <p>
-    <%= link_to conversation.title, conversation_path(conversation) %>
-  </p>
-<% end %>
-<hr>
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <!-- TODO: Check for dashboard privacy setting to decide whether to show name -->
+    <h1 class="jumbotron-heading">Conversations</h1>
+    <p class="lead text-muted">News, Politics, Businesses, Meetups talks</p>
+    <p>
+      <%= link_to 'Start a New Conversation', new_conversation_path, class: 'btn btn-outline-primary btn-sm' %>
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row conversations-bar-main">
+    <div class="col-md-4">
+      Conversation Author
+    </div>
+    <div class="col-md-4">
+      Conversation Title
+    </div>
+    <div class="col-md-4">
+      Date Posted
+    </div>
+  </div>
+
+  <% @conversations.each do |conversation| %>
+    <div class="<%= cycle('conversations-bar1', 'conversations-bar2') %> row">
+      <div class="col-md-4">
+        <%= conversation.user.name %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to conversation.title, conversation_path(conversation) %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to distance_of_time_in_words(conversation.created_at, Time.now) %> ago
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <%= render 'page-title' %>
