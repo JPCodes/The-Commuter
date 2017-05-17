@@ -1,26 +1,43 @@
-<div class="current-article">
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">News Center</h1>
+    <p class="lead text-muted">Featuring the latest stories from the New York Times and The Guardian News</p>
+  </div>
+</section>
 
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <% if @nyt_home_articles %>
+        <% @nyt_home_articles.each do |article| %>
+        <div class="card col-md-12">
+          <h5 class="card-title"><%= article['title'] %> | <%= article['section'] %></h5>
+          <h6 class="card-text"><%= article['byline'] %></h6>
+          <h5 class="card-text"><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
+          <% if article['multimedia'][3] %>
+            <%= image_tag article['multimedia'][3]['url'], class: 'nyt-dashboard-img center-block' %>
+            <p class="card-text"><%= article['multimedia'][3]['caption'] %></p>
+          <% elsif article['multimedia'][2] %>
+            <%= image_tag article['multimedia'][2]['url'], class: 'nyt-dashboard-img center-block' %>
+            <p class="card-text"><%= article['multimedia'][2]['caption'] %></p>
+          <% end %>
+          <p class="card-text"><%= link_to 'View Information', show_article_path(article: article), remote: true %></p>
+          <p class="card-text"><%= link_to 'Original Story', article['url'], target: '_blank' %></p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <% if @top_guardian_headlines %>
+        <% @top_guardian_headlines.each do |article| %>
+          <div class="card col-md-12">
+            <h5 class="card-title"><%= article['webTitle'] %> | <%= article['sectionName'] %></h5>
+            <h5 class="card-text"><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
+            <p class="card-text"><%= link_to 'Original Story', article['webUrl'], target: '_blank' %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% if @nyt_home_articles %>
-  <% @nyt_home_articles.each do |article| %>
-    <h4><%= article['title'] %> | <%= article['section'] %></h4>
-    <h6><%= article['byline'] %></h6>
-    <h5><%= article['published_date'].to_date.strftime("%d %B %Y") %></h5>
-    <% if article['multimedia'][2] %>
-      <%= image_tag(article['multimedia'][2]['url']) %>
-      <h5><%= article['multimedia'][2]['caption'] %></h5>
-    <% end %>
-    <p><%= link_to 'View Information', show_article_path(article: article), remote: true %></p>
-    <p><%= link_to 'Original', article['url'] %></p>
-  <% end %>
-<% end %>
-<hr>
-<% if @top_guardian_headlines %>
-Guardian Top 10 Stories section
-  <% @top_guardian_headlines.each do |article| %>
-  <h4><%= article['webTitle'] %></h4>
-  <h6><%= article['sectionName'] %></h6>
-  <h5><%= article['webPublicationDate'].to_date.strftime("%d %B %Y") %></h5>
-  <% end %>
-<% end %>
