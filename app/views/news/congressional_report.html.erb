@@ -1,15 +1,24 @@
-<h1>Your Daily Congressional Report</h1>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">House &amp; Senate</h1>
+    <p class="lead text-muted">Your Daily Congressional Report</p>
+  </div>
+</section>
+<br>
 
-<% if @reports %>
-  <% @reports.each do |bill| %>
-    <p><%= bill['number'] %> <%= bill['title'] %></p>
-    <p>Introduced: <%= bill['introduced_date'] %></p>
-    <% if !bill['primary_subject'].empty? %>
-      <p>Subject: <%= bill['primary_subject'] %></p>
+<div class="container text-center">
+  <% if @reports %>
+    <% @reports.each do |bill| %>
+    <div class="card col-md-12">
+      <%= image_tag ('propublica/'.concat((rand(1...9)).to_s).concat('.jpg')), :class => 'rounded mx-auto d-block', size: "210x140"  %>
+      <p class="card-title"><%= bill['number'] %> <%= bill['title'] %></p>
+      <p class="card-text">Introduced: <%= bill['introduced_date'] %></p>
+      <% if !bill['primary_subject'].empty? %>
+        <p class="card-text">Subject: <%= bill['primary_subject'] %></p>
+      <% end %>
+      <p class="card-text">Last Major Action: <%= bill['latest_major_action'] %></p>
+      <p class="card-text"><%= link_to 'See Bill', bill['govtrack_url'] %></p>
+    </div>
     <% end %>
-    <!-- <p>Bill URL: <%= bill['bill_uri'] %></p>
-    <p>Sponsor: <%= bill['sponsor_uri'] %></p> -->
-    <p>Last Major Action: <%= bill['latest_major_action'] %></p>
-    <hr>
   <% end %>
-<% end %>
+</div>

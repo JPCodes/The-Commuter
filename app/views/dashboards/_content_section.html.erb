@@ -40,7 +40,7 @@
   <% generated_content[:content].in_groups_of(4, false).each do |bills| %>
       <% bills.each do |bill| %>
         <div class="card col-md-3 col-sm-6 col-xs-12">
-          <%= image_tag ('propublica/'.concat((rand(1...9)).to_s).concat('.jpg')), :class => 'center-block', size: "210x140"  %>
+          <%= image_tag ('propublica/'.concat((rand(1...9)).to_s).concat('.jpg')), :class => 'rounded mx-auto d-block', size: "210x140"  %>
           <p class="card-title"><%= bill['number'] %> <%= bill['title'] %></p>
           <p class="card-text">Introduced: <%= bill['introduced_date'] %></p>
           <% if !bill['primary_subject'].empty? %>
