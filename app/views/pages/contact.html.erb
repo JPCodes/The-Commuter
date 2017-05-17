@@ -1,15 +1,24 @@
-<h3>Contact Me</h3>
-
-<p>
-  <%= link_to 'Contact me on LinkedIn', 'https://www.linkedin.com/in/jpcodes/' %>
-</p>
-<p>
-  <%= link_to 'Find JPCodes on Github', 'https://github.com/JPCodes' %>
-</p>
-<p>
-  <%= link_to 'See what I\'m up to on Twitter', 'https://twitter.com/jp_codes' %>
-</p>
-<p>
-  Portfolio Site Coming Soon!
-</p>
-<hr>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Contact</h1>
+    <p class="lead text-muted">Meet the Developer behind this site</p>
+    <p>
+      <%= link_to 'Start a New Conversation', new_conversation_path, class: 'btn btn-outline-primary btn-sm' %>
+    </p>
+  </div>
+</section>
+<br>
+<div class="container">
+  <p>
+    <%= link_to 'Contact me on LinkedIn', 'https://www.linkedin.com/in/jpcodes/' %>
+  </p>
+  <p>
+    <%= link_to 'Find JPCodes on Github', 'https://github.com/JPCodes' %>
+  </p>
+  <p>
+    <%= link_to 'See what I\'m up to on Twitter', 'https://twitter.com/jp_codes' %>
+  </p>
+  <p>
+    Portfolio Site Coming Soon!
+  </p>
+</div>

@@ -1,8 +1,22 @@
-<h3>About The Commuter</h3>
-<p>
-  The Commuter is the app that I wish I had during my morning commute. It features news from the New York Times and the Guardian. There is also a section for viewing the latest major bills in Congress and their current status. If one wishes to discuss any of these things, there is also a discussion forum that is available to anyone that signs in using Google or Facebook. Lastly, there is a page that features a Yelp search and allows the user to see any search result through the Uber app.
-</p>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">About The Commuter</h1>
+    <p class="lead text-muted">This is a non-profit, non-commercial project that serves as a proof of knowledge in the Ruby on Rails framework</p>
+    <p>
+      <%= link_to 'Start a New Conversation', new_conversation_path, class: 'btn btn-outline-primary btn-sm' %>
+    </p>
+  </div>
+</section>
+<br>
+<div class="container">
 
-<p>
-  <%= link_to 'Find this Open Source Project on Github', 'https://github.com/JPCodes' %>
-</p>
+  <h4>
+    This is a non-profit, non-commercial project.
+  </h4>
+
+  <p class="text-muted">The Commuter is the app that I wish I had during my morning commute. It features news from the New York Times and the Guardian. There is also a section for viewing the latest major bills in Congress and their current status. <b>Users can also customize their dashboard by choosing what news they'd like to see.</b> If one wishes to discuss any of these things, there is also a discussion forum that is available to anyone that signs in using Google or Facebook. Lastly, there is a page that features a Yelp search and allows the user to see any search result through the Uber app.</p>
+
+  <p>
+    <%= link_to 'Find this Open Source Project on Github', 'https://github.com/JPCodes' %>
+  </p>
+</div>
