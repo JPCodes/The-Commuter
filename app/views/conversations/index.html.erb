@@ -12,10 +12,10 @@
 <div class="container">
   <div class="row conversations-bar-main">
     <div class="col-md-4">
-      Conversation Author
+      Conversation Title
     </div>
     <div class="col-md-4">
-      Conversation Title
+      Conversation Author
     </div>
     <div class="col-md-4">
       Date Posted
@@ -25,10 +25,10 @@
   <% @conversations.each do |conversation| %>
     <div class="<%= cycle('conversations-bar1', 'conversations-bar2') %> row">
       <div class="col-md-4">
-        <%= conversation.user.name %>
+        <%= link_to conversation.title, conversation_path(conversation) %>
       </div>
       <div class="col-md-4">
-        <%= link_to conversation.title, conversation_path(conversation) %>
+        <%= link_to conversation.user.name, dashboard_path(conversation.user.dashboard) %>
       </div>
       <div class="col-md-4">
         <%= distance_of_time_in_words(conversation.created_at, Time.now) %> ago

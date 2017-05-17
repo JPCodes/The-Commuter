@@ -13,11 +13,13 @@
       <div class="panel panel-white post panel-shadow">
           <div class="post-heading">
               <div class="pull-left image">
-                  <img src="http://api.adorable.io/avatar/200/<%= @conversation.user.id %>" class="img-circle avatar" alt="user profile image">
+                  <%= link_to dashboard_path(@conversation.user.dashboard) do %>
+                     <%= image_tag "http://api.adorable.io/avatar/200/#{@conversation.user.id}", class: 'avatar' %>
+                  <% end %>
               </div>
               <div class="pull-left meta">
                   <div class="title h5">
-                      <a href="#"><b><%= @conversation.user.name %></b></a>
+                      <a href="#"><b><%= link_to @conversation.user.name, dashboard_path(@conversation.user.dashboard) %></b></a>
                       made a post: <%= @conversation.title %>
                   </div>
                   <h6 class="text-muted time"><%= distance_of_time_in_words(@conversation.created_at, Time.now) %> ago</h6>
@@ -41,13 +43,12 @@
             <ul class="comments-list">
               <% @conversation.responses.each do |response| %>
               <li class="comment">
-                <a class="pull-left" href="#">
-                  <img class="avatar" src="http://api.adorable.io/avatar/200/<%= @conversation.user.id %>
-                  " alt="avatar">
-                </a>
+                <%= link_to dashboard_path(response.user.dashboard), class: 'pull-left' do %>
+                   <%= image_tag "http://api.adorable.io/avatar/200/#{response.user.id}", class: 'avatar' %>
+                <% end %>
                   <div class="comment-body">
                     <div class="comment-heading">
-                        <h4 class="user"><%= response.user.name %></h4>
+                        <h4 class="user"><%= link_to response.user.name, dashboard_path(response.user.dashboard) %></h4>
                         <h5 class="time"><%= distance_of_time_in_words(response.created_at, Time.now) %></h5>
                     </div>
                     <p><%= response.content %></p>

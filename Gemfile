@@ -22,7 +22,9 @@ gem 'dotenv-rails', '~> 2.2.0'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap_form', '~> 2.6.0'
+gem 'ffaker', '~> 2.5'
 gem 'newrelic_rpm', '~> 3.15', '>= 3.15.2.317'
+
 
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth', '~> 1.6.1'
